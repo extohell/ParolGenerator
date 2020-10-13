@@ -62,7 +62,12 @@ window.addEventListener("DOMContentLoaded", function () {
 		if (upperCheck.checked) arr = [...arr, ...upperLetters];
 		if (specialsCheck.checked) arr = [...arr, ...arr, ...arr, ...specials];
 
-		const pass = getPassword(arr, +count.value, upperCheck.checked, specialsCheck.checked);
+		const pass = getPassword(
+			arr,
+			+count.value,
+			upperCheck.checked,
+			specialsCheck.checked
+		);
 
 		let timerId = setInterval(() => {
 			for (let j = index; j < count.value; j++) {
@@ -80,6 +85,11 @@ window.addEventListener("DOMContentLoaded", function () {
 				clearInterval(incrId);
 				incrId = null;
 				this.disabled = false;
+				let toCopy = "";
+				Array.from(result.children).forEach((letter) => {
+					toCopy += letter.textContent;
+				});
+				result.innerHTML = toCopy;
 			}
 		}, 300);
 	});
