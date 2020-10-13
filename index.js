@@ -24,12 +24,16 @@ window.addEventListener("DOMContentLoaded", function () {
 			if (+count.value > 20) count.value = 20;
 		}
 
+		getField();
+	});
+
+	const getField = () => {
 		let temp = "";
-		for (let i = 0; i < +this.value; i++) {
+		for (let i = 0; i < +count.value; i++) {
 			temp += "<span>-</span>";
 		}
 		result.innerHTML = temp;
-	});
+	};
 
 	const getRandom = (arr) => {
 		return arr[Math.round(Math.random() * (arr.length - 1))];
@@ -54,6 +58,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	};
 
 	btn.addEventListener("click", function () {
+		getField();
 		this.disabled = true;
 		let index = 0;
 
